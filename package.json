@@ -1,0 +1,7 @@
+{
+  "name": "douyin-analyser",
+  "dependencies": {
+    "@sparticuz/chromium": "^110.0.1",
+    "puppeteer-core": "^19.11.1"
+  }
+}
