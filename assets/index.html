@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <script>
+async function fetchData() {
+  const uid = document.getElementById('uid').value
+  document.getElementById('result').innerHTML = '正在查询中...'
+  
+  try {
+    const res = await fetch('/api/scrape?uid=' + uid)
+    const data = await res.json()
+    document.getElementById('result').innerHTML = `
+      粉丝数：${data.followers}<br>
+      关注数：${data.following}<br>
+      浏览量：${data.views}
+    `
+  } catch (e) {
+    document.getElementById('result').innerHTML = '查询失败，请检查ID是否正确'
+  }
+}
+</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
